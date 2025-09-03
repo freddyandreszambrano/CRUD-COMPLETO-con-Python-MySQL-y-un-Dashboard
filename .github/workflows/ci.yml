@@ -32,7 +32,6 @@ jobs:
 
       - name: Run tests
         run: |
-          # Suponiendo que usas pytest y tienes tests en tests/
           if [ -d "tests" ]; then
             pip install pytest
             pytest tests --junitxml=reports/report.xml || true
@@ -42,7 +41,7 @@ jobs:
 
       - name: Upload test report
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-report
           path: reports/report.xml
